@@ -26,6 +26,7 @@ namespace KameraKayitWpf
         public MainWindow()
         {
             InitializeComponent();
+            // Hello World
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -33,7 +34,8 @@ namespace KameraKayitWpf
             int height = 1080;
             int width = 1440;
             string path = "file";
-
+            string path2 = "atat";
+            // burasi duzeltilecek
             string[] files = System.IO.Directory.GetFiles(path);
 
             foreach (string img in files)
