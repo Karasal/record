@@ -10,6 +10,7 @@ namespace KameraKayitWpf
 {
     /// <summary>
     /// App.xaml etkileşim mantığı
+    /// App.asdasda dsd 
     /// </summary>
     public partial class App : Application
     {
