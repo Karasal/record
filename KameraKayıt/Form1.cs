@@ -17,8 +17,6 @@ using System.Diagnostics;
 
 namespace KameraKayıt
 {
-    
-
 
     public partial class Form1 : Form
     {
@@ -70,8 +68,8 @@ namespace KameraKayıt
             dialog = MessageBox.Show("Fotoğraf işlensin mi?", "ÇIKIŞ", MessageBoxButtons.YesNo);
             if (dialog == DialogResult.Yes)
             {   
-                int ij = 300;
-                string  Key = ij.ToString("D6");
+                //int ij = 300;
+                //string  Key = ij.ToString("D6");
                 //Stopwatch stopwatch = Stopwatch.StartNew(); //creates and start the instance of Stopwatch
                 //                                            //your sample code
                 //System.Threading.Thread.Sleep(500);
@@ -79,44 +77,65 @@ namespace KameraKayıt
                 //Console.WriteLine(stopwatch.ElapsedMilliseconds);
                 foreach (string img in files)
                 {
-                    Stopwatch stopwatch4 = Stopwatch.StartNew();
+                    // Stopwatch stopwatch4 = Stopwatch.StartNew();
                     byte[] Rowimg = System.IO.File.ReadAllBytes(img); //0,9 milisecond
                     
-                    byte[,] Data = new byte[1080, 1440];
-                    var indexer1 = new Mat
-                    string filename = System.IO.Path.GetFileNameWithoutExtension(img);
-                    Stopwatch stopwatch = Stopwatch.StartNew();
+                    //byte[,] Data = new byte[1080, 1440];
+
+                    //var preMat = new OpenCvSharp.Mat<OpenCvSharp.Scalar>(1080, 1440);  //(1080, 1440, OpenCvSharp.MatType.CV_8UC3); //matSize, OpenCvSharp.MatType.CV_8UC3);
+                    //var indexer1 = preMat.GetUnsafeGenericIndexer<OpenCvSharp.Scalar>();
+
+                    //string filename = System.IO.Path.GetFileNameWithoutExtension(img);
+                    //Stopwatch stopwatch = Stopwatch.StartNew();
+
+                    //var mat2 = new OpenCvSharp.Mat<Byte>(1080, 1440);
+
+                    //var indexer = mat2.GetIndexer();
+
+                    /*
                     for (int i = 0; i < height; i++) // 9 milisecond
                     {
 
                         for (int j = 0; j < width; j++)
                         {
-                            Data[i, j] = Rowimg[i * 1440 + j];  
+                            //Data[i, j] = Rowimg[i * 1440 + j];  
+                            //byte temp = Rowimg[i * 1440 + j];
+                            indexer1[i,j] = Rowimg[i * 1440 + j];
                         }
                     }
                     stopwatch.Stop();
+                    */
 
 
-                    OpenCvSharp.Mat mat = new OpenCvSharp.Mat(@"C:\Users\furka\OneDrive\Masaüstü\GAMES\indir.jpg");       //LoadMode.Color);
+                    // OpenCvSharp.Mat mat = new OpenCvSharp.Mat(@"C:\Users\Zorro\source\repos\WpfApp1\WpfApp1\bin\x64\Debug\output\0.jpeg");       //LoadMode.Color);
 
-                    var mat3 = new Mat<Vec3b>(mat); // cv::Mat_<cv::Vec3b>
-                    var indexer = mat3.GetIndexer();
+                    var mat_test = new OpenCvSharp.Mat<Byte>(1080, 1440);
+                    var index_test = mat_test.GetIndexer();
 
-                    for (int y = 0; y < mat.Height; y++)
+                    // OpenCvSharp.Mat<OpenCvSharp.
+                    
+
+                    for (int y = 0; y < mat_test.Height; y++)   // 96 ms
                     {
-                        for (int x = 0; x < mat.Width; x++)
+                        for (int x = 0; x < mat_test.Width; x++)
                         {
-                            Vec3b color1 = indexer[y, x];
-                            byte temp = color1.Item0;
-                            color1.Item0 = color1.Item2; // B <- R
-                            color1.Item2 = temp;        // R <- B
-                            indexer[y, x] = color1;
+                            index_test[y, x] = Rowimg[y * 1440 + x];
                         }
                     }
 
+                    
+                    
+                    OpenCvSharp.Mat imageTest = new OpenCvSharp.Mat(); // 0 ms
+                    
+
+                    OpenCvSharp.Cv2.CvtColor(mat_test, imageTest, OpenCvSharp.ColorConversionCodes.BayerBG2BGR); // 5 ms
 
 
+                    // Stopwatch stopwatch4 = Stopwatch.StartNew();
+                    videokayit.Write(imageTest); // 12 ms
+                    // stopwatch4.Stop();
 
+                    /*
 
                     Stopwatch stopwatch1 = Stopwatch.StartNew();
                     SharpCV.Mat dst = new SharpCV.Mat(Data); //92 milisecond
@@ -140,9 +159,9 @@ namespace KameraKayıt
                     videokayit.Write(matis);  //17 milisecend
                     stopwatch3.Stop();
                     
+                    */
+                    // stopwatch4.Stop();
 
-                    stopwatch4.Stop();
-                    
                 }
                 videokayit.Release();
             }

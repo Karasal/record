@@ -61,13 +61,13 @@
       <HintPath>..\packages\NumSharp.0.30.0\lib\netstandard2.0\NumSharp.dll</HintPath>
     </Reference>
     <Reference Include="OpenCvSharp">
-      <HintPath>..\..\..\..\Downloads\OpenCvSharp-4.5.2-20210405\ManagedLib\net461\OpenCvSharp.dll</HintPath>
+      <HintPath>..\..\OpenCvSharp-4.5.1-20210210\ManagedLib\net461\OpenCvSharp.dll</HintPath>
     </Reference>
     <Reference Include="OpenCvSharp.Extensions">
-      <HintPath>..\..\..\..\Downloads\OpenCvSharp-4.5.2-20210405\ManagedLib\net461\OpenCvSharp.Extensions.dll</HintPath>
+      <HintPath>..\..\OpenCvSharp-4.5.1-20210210\ManagedLib\net461\OpenCvSharp.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="OpenCvSharp.WpfExtensions">
-      <HintPath>..\..\..\..\Downloads\OpenCvSharp-4.5.2-20210405\ManagedLib\net461\OpenCvSharp.WpfExtensions.dll</HintPath>
+      <HintPath>..\..\OpenCvSharp-4.5.1-20210210\ManagedLib\net461\OpenCvSharp.WpfExtensions.dll</HintPath>
     </Reference>
     <Reference Include="SharpCV, Version=0.7.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpCV.0.7.0\lib\netstandard2.0\SharpCV.dll</HintPath>
